@@ -13,6 +13,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,10 +40,18 @@ public class UserController {
     }
 
     @RequestMapping("/admin/user")
-    public String AdminUser(Model model) {
+    public String AdminUser(Model model, User user) {
         List<User> users = this.userService.GetAllUser();
         model.addAttribute("users", users);
         return "admin/user/table-user";
+    }
+
+    @RequestMapping("/admin/user/{id}")
+    public String GetUserDetailPage(Model model, @PathVariable long id) {
+        User userWithId = this.userService.GetUserByID(id);
+        model.addAttribute("userWithId", userWithId);
+        System.out.println(id);
+        return "admin/user/user-detail";
     }
 
     @RequestMapping("/admin/user/create") // GET
@@ -56,6 +66,38 @@ public class UserController {
         return "redirect:/admin/user";
     }
 
+    @RequestMapping("/admin/user/update/{id}")
+    public String AdminUserUpdate(Model model, @PathVariable long id) {
+        User userUpdate = this.userService.GetUserByID(id);
+        model.addAttribute("updateUser", userUpdate);
+        System.out.println(id);
+        return "admin/user/update";
+    }
+
+    @PostMapping("/admin/user/update")
+    public String postUserUpdate(Model model, @ModelAttribute("updateUser") User vanhbui) {
+        User userUpdate = this.userService.GetUserByID(vanhbui.getId());
+        if (userUpdate != null) {
+            userUpdate.setFullName(vanhbui.getFullName());
+            userUpdate.setAddress(vanhbui.getAddress());
+            userUpdate.setPhone(vanhbui.getPhone());
+            this.userService.handleSaveUser(userUpdate);
+        }
+        return "redirect:/admin/user";
+    }
+
+    @RequestMapping("/admin/user/delete/{id}")
+    public String AdminUserDelete(Model model, @PathVariable long id) {
+        model.addAttribute("id", id);
+        model.addAttribute("newUser", new User());
+        return "admin/user/delete";
+    }
+
+    @PostMapping("/admin/user/delete")
+    public String postUserDelete(Model model, @ModelAttribute("deleteUser") User vanhbui) {
+        this.userService.DeleteUser(vanhbui.getId());
+        return "redirect:/admin/user";
+    }
 }
 
 // RestAPI
