@@ -1,4 +1,4 @@
-package vn.hoidanit.laptopshop.controller;
+package vn.hoidanit.laptopshop.controller.admin;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -43,7 +43,7 @@ public class UserController {
     public String AdminUser(Model model, User user) {
         List<User> users = this.userService.GetAllUser();
         model.addAttribute("users", users);
-        return "admin/user/table-user";
+        return "admin/user/view";
     }
 
     @RequestMapping("/admin/user/{id}")
@@ -51,7 +51,7 @@ public class UserController {
         User userWithId = this.userService.GetUserByID(id);
         model.addAttribute("userWithId", userWithId);
         System.out.println(id);
-        return "admin/user/user-detail";
+        return "admin/user/detail";
     }
 
     @RequestMapping("/admin/user/create") // GET

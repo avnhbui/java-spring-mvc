@@ -27,26 +27,27 @@
                                 <ol class="breadcrumb mb-4">
                                     <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                                     <li class="breadcrumb-item"><a href="/admin/user">User</a></li>
-                                    <li class="breadcrumb-item active">Delete User</li>
+                                    <li class="breadcrumb-item active">User Detail</li>
 
                                 </ol>
                                 <div class="container mt-5">
-                                    <div class="row justify-content-center">
-                                        <div class="col-md-6">
-                                            <h1>Delete the user with id: ${id}</h1>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>User Information</h4>
                                             <hr>
-                                            <div class="alert alert-danger" role="alert">
-                                                Are you sure to delete this user ?!
-                                            </div>
-                                            <form:form method="post" action="/admin/user/delete"
-                                                modelAttribute="newUser">
-                                                <div class="mb-3" style="display: none;">
-                                                    <label for="exampleInputEmail1" class="form-label">Id</label>
-                                                    <form:input value="${id}" type="text" class="form-control"
-                                                        path="id" />
+                                            <div class="card" style="width: 60%">
+                                                <div class="card-header">
+                                                    Featured
                                                 </div>
-                                                <button class="btn btn-danger">Confirm</button>
-                                            </form:form>
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">ID: ${userWithId.id}</li>
+                                                    <li class="list-group-item">Email: ${userWithId.email}</li>
+                                                    <li class="list-group-item">Fullname: ${userWithId.fullName}</li>
+                                                    <li class="list-group-item">Address: ${userWithId.address}</li>
+
+                                                </ul>
+                                            </div>
+
                                         </div>
                                     </div>
                                 </div>
