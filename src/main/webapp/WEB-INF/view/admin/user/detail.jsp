@@ -2,6 +2,7 @@
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
         <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 
+
             <!DOCTYPE html>
             <html lang="en">
 
@@ -44,7 +45,10 @@
                                                     <li class="list-group-item">Email: ${userWithId.email}</li>
                                                     <li class="list-group-item">Fullname: ${userWithId.fullName}</li>
                                                     <li class="list-group-item">Address: ${userWithId.address}</li>
-
+                                                    <li class="list-group-item">Role: ${userWithId.role.name}</li>
+                                                    <li class="list-group-item">Avatar:
+                                                        <img src="/avatar/${userWithId.avatar}" />
+                                                    </li>
                                                 </ul>
                                             </div>
 
