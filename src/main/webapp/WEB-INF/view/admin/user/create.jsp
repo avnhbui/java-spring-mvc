@@ -9,9 +9,9 @@
                 <meta charset="utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-                <meta name="author" content="Hỏi Dân IT" />
-                <title>Dashboard - Hỏi Dân IT</title>
+                <meta name="description" content="VanhBui - Dự án laptopshop" />
+                <meta name="author" content="VanhBui" />
+                <title>CreateUser - VanhBui</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
                 <script>
@@ -50,33 +50,44 @@
                                             <form:form method="post" action="/admin/user/create"
                                                 modelAttribute="newUser" class="row" enctype="multipart/form-data">
                                                 <div class="mb-3 col-md-6 col-12">
-                                                    <label for="exampleInputEmail1" class="form-label">Email
+                                                    <c:set var="errorEmail">
+                                                        <form:errors path="email" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <label class="form-label">Email
                                                         address</label>
-                                                    <form:input type="email" class="form-control" path="email" />
+                                                    <form:input type="email"
+                                                        class="form-control ${not empty errorEmail ? 'is-invalid' : ''}"
+                                                        path="email" />
+                                                    ${errorEmail}
                                                 </div>
 
                                                 <div class="mb-3 col-md-6 col-12">
-                                                    <label for="exampleInputPassword1"
-                                                        class="form-label">Password</label>
-                                                    <form:input type="password" class="form-control" path="password" />
+                                                    <c:set var="errorPassword">
+                                                        <form:errors path="password" cssClass="invalid-feedback" />
+                                                    </c:set>
+                                                    <label class="form-label">Password</label>
+                                                    <form:input
+                                                        class="form-control ${not empty errorPassword ? 'is-invalid' : ''}"
+                                                        type="password" path="password" />
+                                                    ${errorPassword}
                                                 </div>
                                                 <div class="mb-3 col-md-6 col-12">
-                                                    <label for="exampleInputfullName1" class="form-label">Your Full
+                                                    <label class="form-label">Your Full
                                                         Name</label>
                                                     <form:input type="text" class="form-control" path="fullName" />
                                                 </div>
                                                 <div class="mb-3 col-md-6 col-12">
-                                                    <label for="exampleInputAddress1" class="form-label">Your
+                                                    <label class="form-label">Your
                                                         Address</label>
                                                     <form:input type="text" class="form-control" path="address" />
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="exampleInputPhone1" class="form-label">Your
+                                                    <label class="form-label">Your
                                                         Phone</label>
                                                     <form:input type="tel" class="form-control" path="phone" />
                                                 </div>
                                                 <div class="mb-3 col-md-6 col-12">
-                                                    <label for="exampleInputPhone1" class="form-label">Your
+                                                    <label class="form-label">Your
                                                         Role:</label>
                                                     <form:select class="form-select" path="role.name">
                                                         <form:option value="ADMIN">Admin</form:option>

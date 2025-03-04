@@ -10,9 +10,9 @@
                 <meta charset="utf-8" />
                 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-                <meta name="description" content="Hỏi Dân IT - Dự án laptopshop" />
-                <meta name="author" content="Hỏi Dân IT" />
-                <title>Dashboard - Hỏi Dân IT</title>
+                <meta name="description" content="VanhBui - Dự án laptopshop" />
+                <meta name="author" content="VanhBui" />
+                <title>DetailProduct - VanhBui</title>
                 <link href="/css/styles.css" rel="stylesheet" />
                 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
             </head>
@@ -47,7 +47,8 @@
                                                     <li class="list-group-item">Address: ${userWithId.address}</li>
                                                     <li class="list-group-item">Role: ${userWithId.role.name}</li>
                                                     <li class="list-group-item">Avatar:
-                                                        <img src="/avatar/${userWithId.avatar}" />
+                                                        <img src="/images/avatar/${userWithId.avatar}"
+                                                            style="max-width: 250px; max-height: 250px;" />
                                                     </li>
                                                 </ul>
                                             </div>
